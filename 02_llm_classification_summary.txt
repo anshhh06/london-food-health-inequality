@@ -1,0 +1,17 @@
+LLM CLASSIFICATION SUMMARY
+==================================================
+
+Total POIs: 10907
+Successfully classified: 10907
+Errors: 0
+
+By LLM category:
+llm_category
+fast_food                                                          4745
+convenience_chain                                                  2372
+independent_fresh_food                                             2337
+other                                                               835
+chain_supermarket                                                   536
+market                                                               80
+chain_supermarket\n\nWait, let me reconsider.\n\nfast_food            1
+chain_supermarket\n\nWait, let me reconsider. GAIL's is a chain       1

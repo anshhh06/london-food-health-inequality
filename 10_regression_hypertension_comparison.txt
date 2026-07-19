@@ -1,0 +1,15 @@
+REGRESSION MODEL COMPARISON — HYPERTENSION
+==================================================
+
+Outcome: Hypertension prescription rate per capita (2019)
+
+           Model        R2           AIC  coef_dw_indep_fresh
+0            OLS  0.197518  43266.811845            -3.361217
+1    Spatial Lag  0.929259  33640.663151            -0.061152
+2  Spatial Error  0.128640  33672.176097             0.149505
+
+Key findings:
+- OLS: dw_indep_fresh coef = -3.361 (p<0.001) — significant protective effect
+- Spatial Lag: dw_indep_fresh coef = -0.061 (p=0.694) — non-significant after spatial control
+- Spatial Error: dw_indep_fresh coef = 0.150 (p=0.426) — non-significant
+- Best model: Spatial Lag (lowest AIC = 33,641, R2 = 0.93)

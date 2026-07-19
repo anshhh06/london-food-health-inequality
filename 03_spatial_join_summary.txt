@@ -1,0 +1,6 @@
+SPATIAL JOIN SUMMARY
+==================================================
+
+Total POIs: 10907
+Matched to London LSOAs: 9980
+Outside London boundary: 927

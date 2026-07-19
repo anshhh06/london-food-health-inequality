@@ -1,0 +1,11 @@
+OSM POI EXTRACTION SUMMARY
+==================================================
+
+Total POIs extracted: 10907
+
+By original OSM category:
+category
+supermarket               4658
+fast_food                 4583
+independent_fresh_food    1604
+market                      62

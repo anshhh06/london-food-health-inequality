@@ -1,0 +1,16 @@
+REGRESSION MODEL COMPARISON — DIABETES
+==================================================
+
+Outcome: Diabetes prescription rate per capita (2019)
+
+           Model        R2           AIC  coef_dw_indep_fresh
+0            OLS  0.139862  39413.729811            -0.817239
+1    Spatial Lag  0.923151  29860.237610             0.074075
+2  Spatial Error  0.047262  29875.260318             0.175226
+
+Key findings:
+- OLS: dw_indep_fresh coef = -0.817 (p=0.016) — significant protective effect
+- Spatial Lag: dw_indep_fresh coef = 0.074 (p=0.473) — non-significant after spatial control
+- Spatial Error: dw_indep_fresh coef = 0.175 (p=0.161) — non-significant
+- Best model: Spatial Lag (lowest AIC = 29,860, R2 = 0.92)
+- Spatial autocorrelation confirmed (LM tests p<0.001)

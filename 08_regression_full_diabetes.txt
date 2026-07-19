@@ -1,0 +1,127 @@
+FULL REGRESSION OUTPUT — DIABETES (2019)
+============================================================
+
+--- OLS ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ORDINARY LEAST SQUARES
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :    diabetes                Number of Observations:        4612
+Mean dependent var  :     35.0699                Number of Variables   :           5
+S.D. dependent var  :     18.6971                Degrees of Freedom    :        4607
+R-squared           :      0.1399
+Adjusted R-squared  :      0.1391
+Sum squared residual: 1.38648e+06                F-statistic           :    187.2786
+Sigma-square        :     300.951                Prob(F-statistic)     :  6.132e-149
+S.E. of regression  :      17.348                Log likelihood        :  -19701.865
+Sigma-square ML     :     300.625                Akaike info criterion :   39413.730
+S.E of regression ML:     17.3385                Schwarz criterion     :   39445.912
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     t-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT        40.39902         0.32252       125.26026         0.00000
+      dw_indep_fresh        -0.81724         0.33787        -2.41883         0.01561
+        dw_fast_food         0.88327         0.30871         2.86113         0.00424
+      dw_supermarket       -10.54118         0.59433       -17.73630         0.00000
+      dw_convenience        -5.23054         0.49273       -10.61537         0.00000
+------------------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+MULTICOLLINEARITY CONDITION NUMBER           2.965
+
+TEST ON NORMALITY OF ERRORS
+TEST                             DF        VALUE           PROB
+Jarque-Bera                       2         53.894           0.0000
+
+DIAGNOSTICS FOR HETEROSKEDASTICITY
+RANDOM COEFFICIENTS
+TEST                             DF        VALUE           PROB
+Breusch-Pagan test                4         21.818           0.0002
+Koenker-Bassett test              4         28.277           0.0000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+- SARERR -
+TEST                              DF       VALUE           PROB
+Lagrange Multiplier (lag)         1       9155.847           0.0000
+Robust LM (lag)                   1        464.941           0.0000
+Lagrange Multiplier (error)       1       8709.019           0.0000
+Robust LM (error)                 1         18.113           0.0000
+Lagrange Multiplier (SARMA)       2       9173.960           0.0000
+
+- Spatial Durbin -
+TEST                              DF       VALUE           PROB
+LM test for WX                    4        466.603           0.0000
+Robust LM WX test                 4         19.775           0.0006
+Lagrange Multiplier (lag)         1       9155.847           0.0000
+Robust LM Lag - SDM               1       8709.019           0.0000
+Joint test for SDM                5       9175.622           0.0000
+================================ END OF REPORT =====================================
+
+--- SPATIAL LAG ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: MAXIMUM LIKELIHOOD SPATIAL LAG (METHOD = FULL)
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :    diabetes                Number of Observations:        4612
+Mean dependent var  :     35.0699                Number of Variables   :           6
+S.D. dependent var  :     18.6971                Degrees of Freedom    :        4606
+Pseudo R-squared    :      0.9232
+Spatial Pseudo R-squared:  0.3460
+Log likelihood      : -14924.1188
+Sigma-square ML     :     28.1365                Akaike info criterion :   29860.238
+S.E of regression   :      5.3044                Schwarz criterion     :   29898.856
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT         1.85248         0.16189        11.44311         0.00000
+      dw_indep_fresh         0.07407         0.10331         0.71703         0.47335
+        dw_fast_food         0.03184         0.09440         0.33728         0.73591
+      dw_supermarket        -0.54921         0.18254        -3.00865         0.00262
+      dw_convenience        -0.35494         0.15091        -2.35205         0.01867
+          W_diabetes         0.95182         0.00368       258.49024         0.00000
+------------------------------------------------------------------------------------
+
+SPATIAL LAG MODEL IMPACTS
+Impacts computed using the 'simple' method.
+            Variable         Direct        Indirect          Total
+      dw_indep_fresh         0.0741          1.4634          1.5375
+        dw_fast_food         0.0318          0.6290          0.6608
+      dw_supermarket        -0.5492        -10.8500        -11.3992
+      dw_convenience        -0.3549         -7.0121         -7.3670
+================================ END OF REPORT =====================================
+
+--- SPATIAL ERROR ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ML SPATIAL ERROR (METHOD = full)
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :    diabetes                Number of Observations:        4612
+Mean dependent var  :     35.0699                Number of Variables   :           5
+S.D. dependent var  :     18.6971                Degrees of Freedom    :        4607
+Pseudo R-squared    :      0.0473
+Log likelihood      : -14932.6302
+Sigma-square ML     :     28.0554                Akaike info criterion :   29875.260
+S.E of regression   :      5.2967                Schwarz criterion     :   29907.442
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT        32.76970         1.78799        18.32767         0.00000
+      dw_indep_fresh         0.17523         0.12514         1.40021         0.16145
+        dw_fast_food        -0.04712         0.09720        -0.48478         0.62783
+      dw_supermarket        -0.23823         0.32980        -0.72234         0.47008
+      dw_convenience        -0.13456         0.17517        -0.76814         0.44240
+              lambda         0.95634         0.00348       274.60924         0.00000
+------------------------------------------------------------------------------------
+================================ END OF REPORT =====================================

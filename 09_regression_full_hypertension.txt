@@ -1,0 +1,127 @@
+FULL REGRESSION OUTPUT — HYPERTENSION (2019)
+============================================================
+
+--- OLS ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ORDINARY LEAST SQUARES
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :hypertension                Number of Observations:        4612
+Mean dependent var  :     59.2346                Number of Variables   :           5
+S.D. dependent var  :     29.3939                Degrees of Freedom    :        4607
+R-squared           :      0.1975
+Adjusted R-squared  :      0.1968
+Sum squared residual: 3.19701e+06                F-statistic           :    283.4844
+Sigma-square        :     693.947                Prob(F-statistic)     :  3.356e-218
+S.E. of regression  :      26.343                Log likelihood        :  -21628.406
+Sigma-square ML     :     693.194                Akaike info criterion :   43266.812
+S.E of regression ML:     26.3286                Schwarz criterion     :   43298.994
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     t-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT        69.31301         0.49026       141.37900         0.00000
+      dw_indep_fresh        -3.36122         0.51203        -6.56454         0.00000
+        dw_fast_food         1.74828         0.46795         3.73604         0.00019
+      dw_supermarket       -15.52441         0.90250       -17.20155         0.00000
+      dw_convenience       -11.39543         0.74624       -15.27048         0.00000
+------------------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+MULTICOLLINEARITY CONDITION NUMBER           2.968
+
+TEST ON NORMALITY OF ERRORS
+TEST                             DF        VALUE           PROB
+Jarque-Bera                       2        109.370           0.0000
+
+DIAGNOSTICS FOR HETEROSKEDASTICITY
+RANDOM COEFFICIENTS
+TEST                             DF        VALUE           PROB
+Breusch-Pagan test                4         61.053           0.0000
+Koenker-Bassett test              4         84.377           0.0000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+- SARERR -
+TEST                              DF       VALUE           PROB
+Lagrange Multiplier (lag)         1       8733.033           0.0000
+Robust LM (lag)                   1        758.295           0.0000
+Lagrange Multiplier (error)       1       7995.251           0.0000
+Robust LM (error)                 1         20.514           0.0000
+Lagrange Multiplier (SARMA)       2       8753.547           0.0000
+
+- Spatial Durbin -
+TEST                              DF       VALUE           PROB
+LM test for WX                    4        763.013           0.0000
+Robust LM WX test                 4         25.231           0.0000
+Lagrange Multiplier (lag)         1       8733.033           0.0000
+Robust LM Lag - SDM               1       7995.251           0.0000
+Joint test for SDM                5       8758.264           0.0000
+================================ END OF REPORT =====================================
+
+--- SPATIAL LAG ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: MAXIMUM LIKELIHOOD SPATIAL LAG (METHOD = FULL)
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :hypertension                Number of Observations:        4612
+Mean dependent var  :     59.2346                Number of Variables   :           6
+S.D. dependent var  :     29.3939                Degrees of Freedom    :        4606
+Pseudo R-squared    :      0.9293
+Spatial Pseudo R-squared:  0.4872
+Log likelihood      : -16814.3316
+Sigma-square ML     :     63.7651                Akaike info criterion :   33640.663
+S.E of regression   :      7.9853                Schwarz criterion     :   33679.282
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT         3.30742         0.26876        12.30621         0.00000
+      dw_indep_fresh        -0.06115         0.15525        -0.39391         0.69365
+        dw_fast_food         0.04366         0.14187         0.30776         0.75826
+      dw_supermarket        -0.69477         0.27534        -2.52334         0.01162
+      dw_convenience        -0.89897         0.22718        -3.95711         0.00008
+      W_hypertension         0.95321         0.00359       265.33457         0.00000
+------------------------------------------------------------------------------------
+
+SPATIAL LAG MODEL IMPACTS
+Impacts computed using the 'simple' method.
+            Variable         Direct        Indirect          Total
+      dw_indep_fresh        -0.0612         -1.2458         -1.3069
+        dw_fast_food         0.0437          0.8895          0.9331
+      dw_supermarket        -0.6948        -14.1538        -14.8486
+      dw_convenience        -0.8990        -18.3138        -19.2128
+================================ END OF REPORT =====================================
+
+--- SPATIAL ERROR ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ML SPATIAL ERROR (METHOD = full)
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :hypertension                Number of Observations:        4612
+Mean dependent var  :     59.2346                Number of Variables   :           5
+S.D. dependent var  :     29.3939                Degrees of Freedom    :        4607
+Pseudo R-squared    :      0.1286
+Log likelihood      : -16831.0880
+Sigma-square ML     :     63.5401                Akaike info criterion :   33672.176
+S.E of regression   :      7.9712                Schwarz criterion     :   33704.358
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT        58.19195         2.97015        19.59227         0.00000
+      dw_indep_fresh         0.14950         0.18783         0.79597         0.42605
+        dw_fast_food        -0.03590         0.14603        -0.24586         0.80579
+      dw_supermarket        -0.25659         0.49888        -0.51434         0.60701
+      dw_convenience        -0.42974         0.26267        -1.63605         0.10183
+              lambda         0.96045         0.00329       292.14591         0.00000
+------------------------------------------------------------------------------------
+================================ END OF REPORT =====================================
