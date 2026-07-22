@@ -1,0 +1,20 @@
+MORAN'S I — SPATIAL AUTOCORRELATION TESTS
+==================================================
+
+KNN spatial weights (k=5), 2019 data
+
+diabetes:
+  Moran's I: 0.9069
+  p-value:   0.0010
+  z-score:   103.7704
+
+hypertension:
+  Moran's I: 0.9095
+  p-value:   0.0010
+  z-score:   104.7207
+
+indep_fresh_food:
+  Moran's I: 0.4165
+  p-value:   0.0010
+  z-score:   45.9054
+

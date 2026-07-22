@@ -1,0 +1,64 @@
+BOROUGH-LEVEL ANALYSIS (RQ3)
+==================================================
+
+Total boroughs analysed: 33
+
+All boroughs sorted by diabetes rate:
+                   borough  lsoa_count  mean_diabetes  mean_hypertension  mean_indep_fresh  mean_fast_food  mean_supermarket  mean_convenience fresh_food_quartile
+14                  Harrow         144      64.205756          93.874388          0.294893        0.222905          0.125044          0.322861                  Q2
+24                  Newham         185      59.323342          66.155531          0.687215        0.533610          0.233802          0.519072                  Q3
+16              Hillingdon         170      54.554784          87.516883          0.084456        0.141754          0.104884          0.132709           Q1_lowest
+25               Redbridge         164      53.524381          76.397911          0.284934        0.262981          0.216980          0.199576                  Q2
+17                Hounslow         150      50.122309          73.606597          0.269894        0.252790          0.171237          0.252609                  Q2
+9                  Enfield         183      48.917842          75.861256          0.264656        0.141848          0.161742          0.167650                  Q2
+30          Waltham Forest         146      48.694875          77.220086          0.408145        0.228568          0.106575          0.219558                  Q3
+8                   Ealing         199      47.728375          66.410681          0.498278        0.394368          0.318101          0.334001                  Q3
+15                Havering         153      45.555769          94.054448          0.033071        0.080901          0.128414          0.067976           Q1_lowest
+7                  Croydon         229      44.229285          77.799427          0.149846        0.316137          0.152792          0.226550           Q1_lowest
+10               Greenwich         164      43.993609          72.654794          0.315730        0.472794          0.437075          0.343628                  Q2
+2                   Bexley         148      41.393432          87.726956          0.018549        0.073476          0.117536          0.062664           Q1_lowest
+0     Barking and Dagenham         115      41.304675          63.771197          0.142668        0.155187          0.159937          0.193837           Q1_lowest
+28                  Sutton         123      40.424489          83.027212          0.182607        0.342646          0.235356          0.285000                  Q2
+3                    Brent         181      40.279265          48.191950          0.412616        0.275380          0.274189          0.336333                  Q3
+20    Kingston upon Thames          99      37.819276          77.589477          0.138206        0.303111          0.229308          0.309562           Q1_lowest
+4                  Bromley         199      34.189055          91.002561          0.085175        0.111705          0.169352          0.113219           Q1_lowest
+22                Lewisham         175      32.358787          59.458159          0.553275        0.587955          0.344701          0.526303                  Q3
+13                Haringey         147      32.074909          46.640510          1.111795        0.590231          0.375758          0.489834          Q4_highest
+23                  Merton         126      31.959825          51.369426          0.148719        0.223382          0.346953          0.314652           Q1_lowest
+1                   Barnet         220      30.750907          59.537971          0.286153        0.190903          0.248314          0.169677                  Q2
+31              Wandsworth         186      24.168544          46.059671          0.456534        0.457630          0.484468          0.548213                  Q3
+26    Richmond upon Thames         115      23.217368          63.117883          0.051670        0.017425          0.079457          0.047354           Q1_lowest
+11                 Hackney         149      23.190878          34.036319          0.798996        0.505465          0.435656          0.616552          Q4_highest
+27               Southwark         173      22.518015          37.219476          0.689308        0.795206          0.627771          0.854902          Q4_highest
+12  Hammersmith and Fulham         115      21.547903          42.041567          0.714515        0.654094          0.619697          0.666223          Q4_highest
+21                 Lambeth         181      21.391333          35.794252          0.530878        0.695011          0.427462          0.876397                  Q3
+29           Tower Hamlets         169      16.495913          20.011302          0.827956        1.224591          0.445694          0.911697          Q4_highest
+18               Islington         126       9.972405          15.670552          1.004456        0.928963          0.714657          0.943287          Q4_highest
+32             Westminster         123       7.303723          12.966783          1.329698        1.274010          0.913554          1.110579          Q4_highest
+19  Kensington and Chelsea         101       6.810553          14.445550          1.627394        0.827161          0.949967          0.579697          Q4_highest
+5                   Camden         130       6.347785          12.675891          0.580782        0.697652          0.641529          0.796476                  Q3
+6           City of London           6       1.668175           2.380816          0.223183        2.766933          1.888650          1.123350                  Q2
+
+Top 5 boroughs by independent fresh food access:
+                   borough  mean_indep_fresh  mean_fast_food  mean_diabetes  mean_hypertension
+19  Kensington and Chelsea          1.627394        0.827161       6.810553          14.445550
+32             Westminster          1.329698        1.274010       7.303723          12.966783
+13                Haringey          1.111795        0.590231      32.074909          46.640510
+18               Islington          1.004456        0.928963       9.972405          15.670552
+29           Tower Hamlets          0.827956        1.224591      16.495913          20.011302
+
+Bottom 5 boroughs by independent fresh food access:
+                 borough  mean_indep_fresh  mean_fast_food  mean_diabetes  mean_hypertension
+2                 Bexley          0.018549        0.073476      41.393432          87.726956
+15              Havering          0.033071        0.080901      45.555769          94.054448
+26  Richmond upon Thames          0.051670        0.017425      23.217368          63.117883
+16            Hillingdon          0.084456        0.141754      54.554784          87.516883
+4                Bromley          0.085175        0.111705      34.189055          91.002561
+
+Mean health outcomes by fresh food access quartile:
+                     mean_diabetes  mean_hypertension  mean_indep_fresh  mean_fast_food
+fresh_food_quartile                                                                    
+Q1_lowest                39.358163          77.105362          0.094707        0.158120
+Q2                       41.700934          67.167618          0.265256        0.581725
+Q3                       35.036538          51.495778          0.515965        0.483772
+Q4_highest               17.489287          27.879007          1.013015        0.849965
