@@ -14,8 +14,8 @@ centroids = pd.read_csv('../data/raw/2019_spatial_raw_master.csv',
                         usecols=['geography code', 'centroid_x', 'centroid_y'])
 df = df.merge(centroids, on='geography code', how='left')
 
-# Use 2019 only
-df = df[df['year'] == 2019].copy()
+# Use 2020 data
+df = df[df['year'] == 2020].copy()
 df = df.loc[:, ~df.columns.duplicated()]
 print(f'LSOAs: {len(df)}')
 
@@ -57,22 +57,22 @@ w.transform = 'r'
 # OLS
 print('\n--- OLS ---')
 ols = OLS(y, X, w=w, spat_diag=True,
-          name_y='diabetes', name_x=x_names, name_ds='London 2019')
+          name_y='diabetes_2020', name_x=x_names, name_ds='London 2020')
 print(ols.summary)
 
 # Spatial Lag
 print('\n--- Spatial Lag ---')
-lag = ML_Lag(y, X, w=w, name_y='diabetes', name_x=x_names, name_ds='London 2019')
+lag = ML_Lag(y, X, w=w, name_y='diabetes_2020', name_x=x_names, name_ds='London 2020')
 print(lag.summary)
 
 # Spatial Error
 print('\n--- Spatial Error ---')
-err = ML_Error(y, X, w=w, name_y='diabetes', name_x=x_names, name_ds='London 2019')
+err = ML_Error(y, X, w=w, name_y='diabetes_2020', name_x=x_names, name_ds='London 2020')
 print(err.summary)
 
 # Save full output
-with open('../results/14_regression_diabetes_with_controls.txt', 'w') as f:
-    f.write('REGRESSION WITH CONFOUNDING CONTROLS — DIABETES (2019)\n')
+with open('../results/16_regression_diabetes_2020_with_controls.txt', 'w') as f:
+    f.write('REGRESSION WITH CONFOUNDING CONTROLS — DIABETES (2020)\n')
     f.write('='*60 + '\n\n')
     f.write('Controls: population density, unemployment, net income, ethnicity, age 65-69\n\n')
     f.write('--- OLS ---\n')
@@ -81,7 +81,7 @@ with open('../results/14_regression_diabetes_with_controls.txt', 'w') as f:
     f.write(lag.summary)
     f.write('\n\n--- SPATIAL ERROR ---\n')
     f.write(err.summary)
-print('Saved to results/14_regression_diabetes_with_controls.txt')
+print('Saved to results/16_regression_diabetes_2020_with_controls.txt')
 
 # Model comparison
 results_df = pd.DataFrame({
@@ -92,5 +92,5 @@ results_df = pd.DataFrame({
 })
 print('\n--- Model Comparison ---')
 print(results_df.to_string())
-results_df.to_csv('../data/processed/regression_results_with_controls.csv', index=False)
+results_df.to_csv('../data/processed/regression_results_2020_with_controls.csv', index=False)
 print('Done!')

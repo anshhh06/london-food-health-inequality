@@ -10,40 +10,41 @@ os.makedirs('../results', exist_ok=True)
 
 print('Loading data...')
 df = pd.read_csv('../data/processed/final_analysis_dataset.csv')
-
-# Add centroids
 centroids = pd.read_csv('../data/raw/2019_spatial_raw_master.csv',
                         usecols=['geography code', 'centroid_x', 'centroid_y'])
 df = df.merge(centroids, on='geography code', how='left')
 
 # Use 2019 only
 df = df[df['year'] == 2019].copy()
-print(f'LSOAs for analysis: {len(df)}')
+df = df.loc[:, ~df.columns.duplicated()]
+print(f'LSOAs: {len(df)}')
 
 # Remove outliers
 threshold = df['o_hypertension_quantity_per_capita'].quantile(0.99)
 df = df[df['o_hypertension_quantity_per_capita'] < threshold]
-print(f'LSOAs after removing outliers: {len(df)}')
 
 # Drop NAs
 key_cols = ['o_hypertension_quantity_per_capita', 'dw_independent_fresh_food',
-            'dw_fast_food', 'dw_chain_supermarket', 'centroid_x', 'centroid_y']
+            'dw_fast_food', 'dw_chain_supermarket', 'dw_convenience_chain',
+            'centroid_x', 'centroid_y',
+            'c_pop_density', 'c_percent unemployed', 'c_net annual income',
+            'c_percent asian', 'c_percent black', 'c_percent Aged 65 to 69 years']
 df = df.dropna(subset=key_cols)
 print(f'LSOAs after dropping NAs: {len(df)}')
 
-# Find IMD column
-imd_cols = [c for c in df.columns if 'imd' in c.lower()]
-
 # Define variables
 y = df[['o_hypertension_quantity_per_capita']].values
-X = df[['dw_independent_fresh_food', 'dw_fast_food',
-        'dw_chain_supermarket', 'dw_convenience_chain']].values
-x_names = ['dw_indep_fresh', 'dw_fast_food', 'dw_supermarket', 'dw_convenience']
 
-if imd_cols:
-    imd = df[imd_cols[0]].fillna(df[imd_cols[0]].median()).values.reshape(-1, 1)
-    X = np.hstack([X, imd])
-    x_names.append('imd')
+X = df[['dw_independent_fresh_food', 'dw_fast_food',
+        'dw_chain_supermarket', 'dw_convenience_chain',
+        'c_pop_density', 'c_percent unemployed',
+        'c_net annual income',
+        'c_percent asian', 'c_percent black',
+        'c_percent Aged 65 to 69 years']].values
+
+x_names = ['dw_indep_fresh', 'dw_fast_food', 'dw_supermarket', 'dw_convenience',
+           'pop_density', 'pct_unemployed', 'net_income',
+           'pct_asian', 'pct_black', 'pct_aged_65_69']
 
 print(f'X shape: {X.shape}, y shape: {y.shape}')
 
@@ -70,16 +71,17 @@ err = ML_Error(y, X, w=w, name_y='hypertension', name_x=x_names, name_ds='London
 print(err.summary)
 
 # Save full output
-with open('../results/09_regression_full_hypertension.txt', 'w') as f:
-    f.write('FULL REGRESSION OUTPUT — HYPERTENSION (2019)\n')
+with open('../results/15_regression_hypertension_with_controls.txt', 'w') as f:
+    f.write('REGRESSION WITH CONFOUNDING CONTROLS — HYPERTENSION (2019)\n')
     f.write('='*60 + '\n\n')
+    f.write('Controls: population density, unemployment, net income, ethnicity, age 65-69\n\n')
     f.write('--- OLS ---\n')
     f.write(ols.summary)
     f.write('\n\n--- SPATIAL LAG ---\n')
     f.write(lag.summary)
     f.write('\n\n--- SPATIAL ERROR ---\n')
     f.write(err.summary)
-print('Saved to results/09_regression_full_hypertension.txt')
+print('Saved to results/15_regression_hypertension_with_controls.txt')
 
 # Model comparison
 results_df = pd.DataFrame({
@@ -90,5 +92,5 @@ results_df = pd.DataFrame({
 })
 print('\n--- Model Comparison ---')
 print(results_df.to_string())
-results_df.to_csv('../data/processed/regression_results_hypertension.csv', index=False)
+results_df.to_csv('../data/processed/regression_results_hypertension_with_controls.csv', index=False)
 print('Done!')
