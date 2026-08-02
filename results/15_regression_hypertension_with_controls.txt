@@ -1,0 +1,153 @@
+REGRESSION WITH CONFOUNDING CONTROLS — HYPERTENSION (2019)
+============================================================
+
+Controls: population density, unemployment, net income, ethnicity, age 65-69
+
+--- OLS ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ORDINARY LEAST SQUARES
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :hypertension                Number of Observations:        4511
+Mean dependent var  :     59.6262                Number of Variables   :          11
+S.D. dependent var  :     29.3711                Degrees of Freedom    :        4500
+R-squared           :      0.3686
+Adjusted R-squared  :      0.3672
+Sum squared residual: 2.45639e+06                F-statistic           :    262.7401
+Sigma-square        :     545.865                Prob(F-statistic)     :           0
+S.E. of regression  :      23.364                Log likelihood        :  -20610.323
+Sigma-square ML     :     544.534                Akaike info criterion :   41242.646
+S.E of regression ML:     23.3352                Schwarz criterion     :   41313.203
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     t-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT       126.82129         4.86816        26.05117         0.00000
+      dw_indep_fresh        -1.14173         0.46907        -2.43402         0.01497
+        dw_fast_food         0.46933         0.42658         1.10021         0.27130
+      dw_supermarket        -9.20622         0.85482       -10.76980         0.00000
+      dw_convenience        -3.83691         0.72023        -5.32731         0.00000
+         pop_density        -0.00174         0.00007       -23.82194         0.00000
+      pct_unemployed      -102.00018         8.39526       -12.14973         0.00000
+          net_income        -0.00091         0.00008       -11.99535         0.00000
+           pct_asian        29.77301         2.45394        12.13275         0.00000
+           pct_black        14.30025         4.22419         3.38533         0.00072
+      pct_aged_65_69       505.41486        38.56926        13.10408         0.00000
+------------------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+MULTICOLLINEARITY CONDITION NUMBER          45.487
+
+TEST ON NORMALITY OF ERRORS
+TEST                             DF        VALUE           PROB
+Jarque-Bera                       2        139.393           0.0000
+
+DIAGNOSTICS FOR HETEROSKEDASTICITY
+RANDOM COEFFICIENTS
+TEST                             DF        VALUE           PROB
+Breusch-Pagan test               10         64.263           0.0000
+Koenker-Bassett test             10         74.042           0.0000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+- SARERR -
+TEST                              DF       VALUE           PROB
+Lagrange Multiplier (lag)         1       6699.564           0.0000
+Robust LM (lag)                   1        989.798           0.0000
+Lagrange Multiplier (error)       1       5859.570           0.0000
+Robust LM (error)                 1        149.805           0.0000
+Lagrange Multiplier (SARMA)       2       6849.369           0.0000
+
+- Spatial Durbin -
+TEST                              DF       VALUE           PROB
+LM test for WX                   10       1008.231           0.0000
+Robust LM WX test                10        168.237           0.0000
+Lagrange Multiplier (lag)         1       6699.564           0.0000
+Robust LM Lag - SDM               1       5859.570           0.0000
+Joint test for SDM               11       6867.801           0.0000
+================================ END OF REPORT =====================================
+
+--- SPATIAL LAG ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: MAXIMUM LIKELIHOOD SPATIAL LAG (METHOD = FULL)
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :hypertension                Number of Observations:        4511
+Mean dependent var  :     59.6262                Number of Variables   :          12
+S.D. dependent var  :     29.3711                Degrees of Freedom    :        4499
+Pseudo R-squared    :      0.9291
+Spatial Pseudo R-squared:  0.5590
+Log likelihood      : -16401.4747
+Sigma-square ML     :     63.2748                Akaike info criterion :   32826.949
+S.E of regression   :      7.9545                Schwarz criterion     :   32903.921
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT         4.79112         1.70538         2.80942         0.00496
+      dw_indep_fresh        -0.03456         0.15971        -0.21642         0.82866
+        dw_fast_food         0.04383         0.14524         0.30178         0.76282
+      dw_supermarket        -0.40496         0.29188        -1.38742         0.16531
+      dw_convenience        -0.50641         0.24552        -2.06257         0.03915
+         pop_density        -0.00007         0.00003        -2.73611         0.00622
+      pct_unemployed        -4.33463         2.86576        -1.51256         0.13039
+          net_income        -0.00005         0.00003        -2.00267         0.04521
+           pct_asian         1.61252         0.84083         1.91778         0.05514
+           pct_black         1.90879         1.43876         1.32669         0.18461
+      pct_aged_65_69        70.09947        13.22571         5.30024         0.00000
+      W_hypertension         0.94411         0.00394       239.61775         0.00000
+------------------------------------------------------------------------------------
+
+SPATIAL LAG MODEL IMPACTS
+Impacts computed using the 'simple' method.
+            Variable         Direct        Indirect          Total
+      dw_indep_fresh        -0.0346         -0.5838         -0.6184
+        dw_fast_food         0.0438          0.7403          0.7842
+      dw_supermarket        -0.4050         -6.8401         -7.2451
+      dw_convenience        -0.5064         -8.5536         -9.0601
+         pop_density        -0.0001         -0.0012         -0.0012
+      pct_unemployed        -4.3346        -73.2149        -77.5495
+          net_income        -0.0001         -0.0009         -0.0009
+           pct_asian         1.6125         27.2366         28.8491
+           pct_black         1.9088         32.2408         34.1496
+      pct_aged_65_69        70.0995       1184.0292       1254.1287
+================================ END OF REPORT =====================================
+
+--- SPATIAL ERROR ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ML SPATIAL ERROR (METHOD = full)
+------------------------------------------------------------------------------------
+Data set            : London 2019
+Weights matrix      :     unknown
+Dependent Variable  :hypertension                Number of Observations:        4511
+Mean dependent var  :     59.6262                Number of Variables   :          11
+S.D. dependent var  :     29.3711                Degrees of Freedom    :        4500
+Pseudo R-squared    :      0.1055
+Log likelihood      : -16426.6972
+Sigma-square ML     :     62.5237                Akaike info criterion :   32875.394
+S.E of regression   :      7.9072                Schwarz criterion     :   32945.951
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT        59.02855         3.78527        15.59429         0.00000
+      dw_indep_fresh         0.13916         0.18870         0.73745         0.46085
+        dw_fast_food        -0.01192         0.14835        -0.08032         0.93598
+      dw_supermarket        -0.09665         0.50394        -0.19178         0.84791
+      dw_convenience        -0.35457         0.27066        -1.31001         0.19019
+         pop_density        -0.00001         0.00003        -0.46698         0.64051
+      pct_unemployed         1.65199         3.34502         0.49387         0.62140
+          net_income        -0.00009         0.00004        -2.13725         0.03258
+           pct_asian         2.04141         2.39172         0.85353         0.39336
+           pct_black         5.34869         2.58304         2.07070         0.03839
+      pct_aged_65_69        57.19926        13.97938         4.09169         0.00004
+              lambda         0.96028         0.00331       290.47352         0.00000
+------------------------------------------------------------------------------------
+================================ END OF REPORT =====================================

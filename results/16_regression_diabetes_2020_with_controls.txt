@@ -1,0 +1,153 @@
+REGRESSION WITH CONFOUNDING CONTROLS — DIABETES (2020)
+============================================================
+
+Controls: population density, unemployment, net income, ethnicity, age 65-69
+
+--- OLS ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ORDINARY LEAST SQUARES
+------------------------------------------------------------------------------------
+Data set            : London 2020
+Weights matrix      :     unknown
+Dependent Variable  :diabetes_2020                Number of Observations:        4511
+Mean dependent var  :     36.1168                Number of Variables   :          11
+S.D. dependent var  :     19.1949                Degrees of Freedom    :        4500
+R-squared           :      0.4286
+Adjusted R-squared  :      0.4273
+Sum squared residual:      949499                F-statistic           :    337.5294
+Sigma-square        :     211.000                Prob(F-statistic)     :           0
+S.E. of regression  :      14.526                Log likelihood        :  -18466.439
+Sigma-square ML     :     210.485                Akaike info criterion :   36954.879
+S.E of regression ML:     14.5081                Schwarz criterion     :   37025.436
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     t-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT        72.87790         3.01691        24.15651         0.00000
+      dw_indep_fresh         0.19845         0.29230         0.67893         0.49722
+        dw_fast_food        -0.08789         0.26569        -0.33080         0.74081
+      dw_supermarket        -5.00055         0.53104        -9.41647         0.00000
+      dw_convenience        -2.48877         0.44928        -5.53950         0.00000
+         pop_density        -0.00095         0.00005       -20.80277         0.00000
+      pct_unemployed       -68.58963         5.20497       -13.17771         0.00000
+          net_income        -0.00067         0.00005       -14.19548         0.00000
+           pct_asian        60.71227         1.56669        38.75186         0.00000
+           pct_black        45.46669         2.62079        17.34845         0.00000
+      pct_aged_65_69       219.63322        23.95786         9.16748         0.00000
+------------------------------------------------------------------------------------
+
+REGRESSION DIAGNOSTICS
+MULTICOLLINEARITY CONDITION NUMBER          45.332
+
+TEST ON NORMALITY OF ERRORS
+TEST                             DF        VALUE           PROB
+Jarque-Bera                       2        111.456           0.0000
+
+DIAGNOSTICS FOR HETEROSKEDASTICITY
+RANDOM COEFFICIENTS
+TEST                             DF        VALUE           PROB
+Breusch-Pagan test               10        419.168           0.0000
+Koenker-Bassett test             10        407.287           0.0000
+
+DIAGNOSTICS FOR SPATIAL DEPENDENCE
+- SARERR -
+TEST                              DF       VALUE           PROB
+Lagrange Multiplier (lag)         1       6642.280           0.0000
+Robust LM (lag)                   1        673.524           0.0000
+Lagrange Multiplier (error)       1       6241.227           0.0000
+Robust LM (error)                 1        272.471           0.0000
+Lagrange Multiplier (SARMA)       2       6914.751           0.0000
+
+- Spatial Durbin -
+TEST                              DF       VALUE           PROB
+LM test for WX                   10        719.560           0.0000
+Robust LM WX test                10        318.507           0.0000
+Lagrange Multiplier (lag)         1       6642.280           0.0000
+Robust LM Lag - SDM               1       6241.227           0.0000
+Joint test for SDM               11       6960.787           0.0000
+================================ END OF REPORT =====================================
+
+--- SPATIAL LAG ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: MAXIMUM LIKELIHOOD SPATIAL LAG (METHOD = FULL)
+------------------------------------------------------------------------------------
+Data set            : London 2020
+Weights matrix      :     unknown
+Dependent Variable  :diabetes_2020                Number of Observations:        4511
+Mean dependent var  :     36.1168                Number of Variables   :          12
+S.D. dependent var  :     19.1949                Degrees of Freedom    :        4499
+Pseudo R-squared    :      0.9257
+Spatial Pseudo R-squared:  0.4786
+Log likelihood      : -14553.4722
+Sigma-square ML     :     28.2163                Akaike info criterion :   29130.944
+S.E of regression   :      5.3119                Schwarz criterion     :   29207.916
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT         2.90084         1.13062         2.56570         0.01030
+      dw_indep_fresh         0.05784         0.10689         0.54108         0.58845
+        dw_fast_food         0.00388         0.09716         0.03992         0.96816
+      dw_supermarket        -0.25964         0.19467        -1.33371         0.18230
+      dw_convenience        -0.30931         0.16442        -1.88115         0.05995
+         pop_density        -0.00004         0.00002        -2.55044         0.01076
+      pct_unemployed        -1.13582         1.91329        -0.59365         0.55275
+          net_income        -0.00005         0.00002        -2.78793         0.00530
+           pct_asian         5.26047         0.63918         8.23006         0.00000
+           pct_black         5.29822         0.98206         5.39499         0.00000
+      pct_aged_65_69        20.23701         8.78278         2.30417         0.02121
+     W_diabetes_2020         0.93449         0.00435       214.67754         0.00000
+------------------------------------------------------------------------------------
+
+SPATIAL LAG MODEL IMPACTS
+Impacts computed using the 'simple' method.
+            Variable         Direct        Indirect          Total
+      dw_indep_fresh         0.0578          0.8250          0.8828
+        dw_fast_food         0.0039          0.0553          0.0592
+      dw_supermarket        -0.2596         -3.7036         -3.9632
+      dw_convenience        -0.3093         -4.4121         -4.7214
+         pop_density        -0.0000         -0.0006         -0.0007
+      pct_unemployed        -1.1358        -16.2020        -17.3378
+          net_income        -0.0000         -0.0007         -0.0007
+           pct_asian         5.2605         75.0385         80.2990
+           pct_black         5.2982         75.5770         80.8752
+      pct_aged_65_69        20.2370        288.6730        308.9100
+================================ END OF REPORT =====================================
+
+--- SPATIAL ERROR ---
+REGRESSION RESULTS
+------------------
+
+SUMMARY OF OUTPUT: ML SPATIAL ERROR (METHOD = full)
+------------------------------------------------------------------------------------
+Data set            : London 2020
+Weights matrix      :     unknown
+Dependent Variable  :diabetes_2020                Number of Observations:        4511
+Mean dependent var  :     36.1168                Number of Variables   :          11
+S.D. dependent var  :     19.1949                Degrees of Freedom    :        4500
+Pseudo R-squared    :      0.2198
+Log likelihood      : -14549.1327
+Sigma-square ML     :     27.3573                Akaike info criterion :   29120.265
+S.E of regression   :      5.2304                Schwarz criterion     :   29190.822
+
+------------------------------------------------------------------------------------
+            Variable     Coefficient       Std.Error     z-Statistic     Probability
+------------------------------------------------------------------------------------
+            CONSTANT        34.02078         2.35000        14.47695         0.00000
+      dw_indep_fresh         0.12466         0.12513         0.99625         0.31913
+        dw_fast_food        -0.02533         0.09827        -0.25770         0.79663
+      dw_supermarket        -0.20455         0.33171        -0.61665         0.53747
+      dw_convenience        -0.10350         0.17969        -0.57599         0.56462
+         pop_density        -0.00002         0.00002        -0.74430         0.45669
+      pct_unemployed         1.09591         2.20408         0.49722         0.61903
+          net_income        -0.00009         0.00003        -3.20117         0.00137
+           pct_asian        11.18224         1.57630         7.09396         0.00000
+           pct_black        11.94927         1.70602         7.00417         0.00000
+      pct_aged_65_69         9.44350         9.22227         1.02399         0.30584
+              lambda         0.95607         0.00351       272.16439         0.00000
+------------------------------------------------------------------------------------
+================================ END OF REPORT =====================================
